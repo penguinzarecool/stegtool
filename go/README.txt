@@ -1,5 +1,5 @@
 This is the Go version.
-*** it just broke and I don't knwo why. ***
+*** There is no error checking for files existing!! ***
 I really don't have time to fix it right now but I will
 
 To compile:
