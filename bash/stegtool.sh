@@ -14,12 +14,12 @@ menu() {
 }
 
 info() {
-echo -e "\n\nThis is the information page on Addison's stegtool!\nAddison's Stegtool encodes a (short) secret message into a\nlossless file (preferrably .png) in such a manner that is is almost\nimpossible to tell that there is a secret message. And, even if the secret\nmessage is revealed, it doesn't matter much, because, using a one-time pad\nmethod, it is impossible to decode the message without the original image.\n\nBefore you start, please make sure that all image files are in the same\ndirectory as the bash executable.\n\nThis project was made to demonstrate my understanding of cryptographic\nsubjects such as steganography and one-time pads, as well as demonstrate\nmy bash scripting abilities.\n\n-Addison Miranda 2025\n\n"
+echo -e "\n\nThis is the information page on Addison's stegtool!\nAddison's Stegtool encodes a (short) secret message into an\n uncompressed pixel file (preferrably .ppm) in such a manner that is is almost\nimpossible to tell that there is a secret message. And, even if the secret\nmessage is revealed, it doesn't matter much, because, using a one-time pad\nmethod, it is impossible to decode the message without the original image.\n\nBefore you start, please make sure that all image files are in the same\ndirectory as the bash executable.\n\nThis project was made to demonstrate my understanding of cryptographic\nsubjects such as steganography and one-time pads, as well as demonstrate\nmy bash scripting abilities.\n\n-Addison Miranda 2025\n\n"
 menu
 }
 
 encode() {
-    echo -e "\nEnter the name of the .png you would like to hide your message in. "
+    echo -e "\nEnter the name of the .ppm you would like to hide your message in. "
     read -p "Make sure that it is in the same directory as this script: " original
     echo -e "\n"
     read -p "Now enter a short secret message: " message
@@ -39,7 +39,7 @@ encode() {
 
 
     dd if=$original bs=1 count=$orig_offset of=part1 2>/dev/null
-    cat part1 > modified.png
+    cat part1 > modified.ppm
 
     for ((i=0; i<$msg_len; i++)); do
         msg_offset=$(( $msg_len - $i ))
@@ -51,23 +51,23 @@ encode() {
         flipped=$((dec ^ msg_bit))
         printf "%b" "$(printf '\\x%02x' "$flipped")" > flipped_byte
 
-        cat flipped_byte >> modified.png
+        cat flipped_byte >> modified.ppm
     done
 
     ((offset++))
     dd if=$original bs=1 skip=$offset of=part2 2>/dev/null
 
-    cat part2 >> modified.png
+    cat part2 >> modified.ppm
     rm target_byte part1 part2 flipped_byte
 
-    echo -e "\nencoding complete!\nWritten to file: modified.png\n"
+    echo -e "\nencoding complete!\nWritten to file: modified.ppm\n"
     menu
 }
 
 decode() {
-    echo -e "\nEnsure that all .png's are in this directory.\n"
-    read -p "Enter the unaltered .png file's full name: " original
-    read -p "Now enter the modified .png file's full name: " modified
+    echo -e "\nEnsure that all .ppm's are in this directory.\n"
+    read -p "Enter the unaltered .ppm file's full name: " original
+    read -p "Now enter the modified .ppm file's full name: " modified
     echo -e "\ndecoding ..."
     echo -e "parsing bytes may take up to 10 seconds ...\n"
 
