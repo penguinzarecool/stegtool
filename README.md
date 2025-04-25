@@ -11,3 +11,5 @@ For simplicity, only the bash program prompts for a "secret message". Otherwise,
 I'll fix this in a bit.
 
 ***I would suggest .ppm files, as thats what I designed this project for.***
+
+I did, however, notice through extensive research, that CAREFULLY CRAFTED and SHORT messages work with .png, which is pretty nifty. This can be seen with the png in the images folder.
