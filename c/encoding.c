@@ -13,7 +13,7 @@ int encodeFile(char originalFile[BUFFER_SIZE], char message[BUFFER_SIZE], int of
         return -1;
     }
     
-    FILE *outfile = fopen("encoded.png", "wb");
+    FILE *outfile = fopen("encoded.ppm", "wb");
 
     if (outfile == NULL) {
         perror("error opening output file\n"); fclose(infile);
