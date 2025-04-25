@@ -8,11 +8,11 @@ import (
 func main() {
     var input int
     var originalFile string
-    var encodedFile string = "encoded.png"
+    var encodedFile string = "encoded.ppm"
     
     fmt.Print("Choose an option: Encode (1) or Decode(2): ")
     fmt.Scan(&input)
-    fmt.Print("What is the original file? (ex: picture.png): ")
+    fmt.Print("What is the original file? (ex: picture.ppm): ")
     fmt.Scan(&originalFile)
     
     //decodedMsg := "decoded.txt"
@@ -30,7 +30,7 @@ func main() {
 
     case 2:
     // this section is for decoding
-    fmt.Print("What is the encoded file? (ex: encoded.png): ")
+    fmt.Print("What is the encoded file? (ex: encoded.ppm): ")
     fmt.Scan(&encodedFile)
     encodedData, _ := os.ReadFile(encodedFile)
     decoded := DecodeStego(original, encodedData, offset)
