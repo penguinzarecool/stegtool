@@ -90,7 +90,7 @@ def decodeFile(file1, file2, offset):
         print(f"An I/O error occured: {e}")
 
 def get_filename(filetype):
-    filename = input(f"enter the {filetype} file name (ex: picture.png): ")
+    filename = input(f"enter the {filetype} file name (ex: picture.ppm): ")
     return filename
 
 def main():
@@ -105,10 +105,10 @@ def main():
 
     if choice == 1:
         infile = get_filename("input")
-        outfile = "encoded.png"
+        outfile = "encoded.ppm"
 
         encodeFile(infile, message, outfile, offset)
-        print("Your file with a secret message is: encoded.png")
+        print("Your file with a secret message is: encoded.ppm")
 
     elif choice == 2:
         file1 = get_filename("first")
