@@ -15,9 +15,9 @@ int main() {
     scanf("%d", &input);
 
     char originalFile[BUFFER_SIZE];
-    char encodedFile[BUFFER_SIZE] = "encoded.png";
+    char encodedFile[BUFFER_SIZE] = "encoded.ppm";
 
-    printf("What is the original file? (ex: picture.png): ");
+    printf("What is the original file? (ex: picture.ppm): ");
     scanf("%c");
     if (fgets(originalFile, BUFFER_SIZE, stdin) != NULL) {
         size_t len = strlen(originalFile);
@@ -36,7 +36,7 @@ int main() {
             encodeFile(originalFile, message, offset);
             break;
         case 2:
-            printf("What is the modified file? (ex: encoded.png): ");
+            printf("What is the modified file? (ex: encoded.ppm): ");
             if (fgets(encodedFile, BUFFER_SIZE, stdin) != NULL) {
                 size_t len = strlen(encodedFile);
                 if (len > 0 && encodedFile[len - 1] == '\n') {
