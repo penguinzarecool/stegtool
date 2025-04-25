@@ -10,7 +10,7 @@ case input
 when 1
     print "What is the original file?: "
     inputPath = gets.chomp
-    outputPath = "encoded.png"
+    outputPath = "encoded.ppm"
     print "What is the message?: "
     message = gets.chomp
     
